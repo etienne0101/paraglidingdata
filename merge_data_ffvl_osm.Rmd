@@ -1,0 +1,57 @@
+---
+title: "data_merge_osm_ffvl"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+install.packages("tidyverse")
+library(tidyverse)
+install.packages("dplyr")
+library(dplyr)
+install.packages("data.table")
+library(data.table)
+```
+
+## Intro
+
+Objectif : enrichir le jeu de données FFVL avec les données d'OpenStreetMap
+
+```{r joint}
+
+#Loading Data
+
+ffvl <- read_csv(file = "data/dgf_ffvl_2021-08-27.csv")
+osm <- read_csv(file = "data/osm_sport_free-flying_France_2021-08-25 - export (2).csv")
+
+#Rename variables
+
+ffvl %>% 
+  rename(ref_ffvl = numero)
+
+osm %>%
+  rename(ref_ffvl = `ref:FFVL`)
+
+#
+
+
+```
+
+
+
+
+
+
+
+
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
